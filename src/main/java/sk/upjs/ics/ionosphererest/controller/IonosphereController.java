@@ -38,7 +38,7 @@ public class IonosphereController {
     }
 
     @GetMapping("/heatmap")
-    public ResponseEntity<List<Data>>
+    public ResponseEntity<List<Heatmap>>
     getHeatmapData(@RequestParam() String attribute,
                      @RequestParam() String station,
                      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
@@ -85,7 +85,7 @@ public class IonosphereController {
             }
 
             long hoursBetween = ChronoUnit.HOURS.between(timeStart, timeEnd);
-            List<Data> result = new ArrayList<>();
+            List<Heatmap> result = new ArrayList<>();
             map.values()
                     .stream()
                     .map(elem -> {
@@ -107,7 +107,7 @@ public class IonosphereController {
     }
 
     @GetMapping("/heatmap2")
-    public ResponseEntity<List<Data>>
+    public ResponseEntity<List<Heatmap>>
     getHeatmapData2(@RequestParam() String attribute,
                         @RequestParam() String station,
                         @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
@@ -157,7 +157,7 @@ public class IonosphereController {
                 }
             }
 
-            List<Data> result = new ArrayList<>();
+            List<Heatmap> result = new ArrayList<>();
             map.values()
                     .stream()
                     .map(elem -> {
