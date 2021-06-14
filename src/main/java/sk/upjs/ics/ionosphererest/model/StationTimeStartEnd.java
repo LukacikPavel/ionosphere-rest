@@ -1,17 +1,19 @@
 package sk.upjs.ics.ionosphererest.model;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class StationTimeStartEnd {
 
     private String station;
-    private LocalDateTime timeStart;
-    private LocalDateTime timeEnd;
+    private Instant timeStart;
+    private Instant timeEnd;
 
     public StationTimeStartEnd(){}
 
-    public StationTimeStartEnd(String station, LocalDateTime timeStart, LocalDateTime timeEnd) {
+    public StationTimeStartEnd(String station, Instant timeStart, Instant timeEnd) {
         this.station = station;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -37,19 +39,19 @@ public class StationTimeStartEnd {
         this.station = station;
     }
 
-    public LocalDateTime getTimeStart() {
+    public Instant getTimeStart() {
         return timeStart;
     }
 
-    public void setTimeStart(LocalDateTime timeStart) {
+    public void setTimeStart(Instant timeStart) {
         this.timeStart = timeStart;
     }
 
-    public LocalDateTime getTimeEnd() {
+    public Instant getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(LocalDateTime timeEnd) {
+    public void setTimeEnd(Instant timeEnd) {
         this.timeEnd = timeEnd;
     }
 

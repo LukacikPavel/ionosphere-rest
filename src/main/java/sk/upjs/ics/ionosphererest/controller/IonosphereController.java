@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import sk.upjs.ics.ionosphererest.model.*;
 import sk.upjs.ics.ionosphererest.repository.IonosphereRepository;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -25,24 +26,12 @@ public class IonosphereController {
     @Autowired
     IonosphereRepository ionosphereRepository;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Ionosphere>> getAll() {
-        try {
-            List<Ionosphere> all = new ArrayList<>();
-            ionosphereRepository.findAll().forEach(all::add);
-            return new ResponseEntity<>(all, HttpStatus.OK);
-        } catch (Exception e) {
-            System.out.println(e);
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
-
     @GetMapping("/heatmap")
     public ResponseEntity<List<Heatmap>>
     getHeatmapData(@RequestParam() String attribute,
                      @RequestParam() String station,
-                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
-                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeEnd) {
+                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeStart,
+                     @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeEnd) {
         try {
             List<Ionosphere> ionospheres = ionosphereRepository
                     .findByStationAndTimeStartGreaterThanEqualAndTimeEndLessThanEqual(station, timeStart, timeEnd);
@@ -110,13 +99,13 @@ public class IonosphereController {
     public ResponseEntity<List<Heatmap>>
     getHeatmapData2(@RequestParam() String attribute,
                         @RequestParam() String station,
-                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
-                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeEnd) {
+                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeStart,
+                        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeEnd) {
         try {
             List<Ionosphere> ionospheres = ionosphereRepository
                     .findByStationAndTimeStartGreaterThanEqualAndTimeEndLessThanEqual(station, timeStart, timeEnd);
 
-            ionospheres.stream().forEach(System.out::println);
+//            ionospheres.stream().forEach(System.out::println);
 //            System.out.println(ionospheres.size());
 
             Map<AzimuthElevation, Heatmap> map = new HashMap<>();
@@ -182,8 +171,8 @@ public class IonosphereController {
     @GetMapping("/scatter")
     public ResponseEntity<List<Data>>
     getScatterData(@RequestParam() String attribute,
-                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
-                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeEnd){
+                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeStart,
+                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeEnd){
         try {
             List<Ionosphere> ionospheres =
                     ionosphereRepository.findByTimeStartGreaterThanEqualAndTimeEndLessThanEqual(timeStart, timeEnd);
@@ -249,8 +238,8 @@ public class IonosphereController {
     @GetMapping("/scatter2")
     public ResponseEntity<List<Data>>
     getScatterData2(@RequestParam() String attribute,
-                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeStart,
-                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime timeEnd){
+                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeStart,
+                   @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Instant timeEnd){
         try {
             List<Ionosphere> ionospheres =
                     ionosphereRepository.findByTimeStartGreaterThanEqualAndTimeEndLessThanEqual(timeStart, timeEnd);
@@ -326,4 +315,27 @@ public class IonosphereController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/test")
+    public ResponseEntity<Ionosphere> test() {
+        try {
+            System.out.println(Instant.now());
+            Ionosphere ionosphere = ionosphereRepository.getById();
+            return new ResponseEntity<>(ionosphere, HttpStatus.OK);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+//    @GetMapping("/test2")
+//    public ResponseEntity<List<Ionosphere>> test2() {
+//        try {
+//            List<Ionosphere> ionosphere = ionosphereRepository.findByTimeStartEqual();
+//            return new ResponseEntity<>(ionosphere, HttpStatus.OK);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
 }

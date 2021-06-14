@@ -1,6 +1,8 @@
 package sk.upjs.ics.ionosphererest.model;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class HeatmapTecu extends Heatmap{
 
@@ -8,7 +10,7 @@ public class HeatmapTecu extends Heatmap{
 
     public HeatmapTecu(){}
 
-    public HeatmapTecu(String station, LocalDateTime timeStart, LocalDateTime timeEnd, int azimuthStart, int azimuthEnd,
+    public HeatmapTecu(String station, Instant timeStart, Instant timeEnd, int azimuthStart, int azimuthEnd,
                        int elevationStart, int elevationEnd, double tecu) {
         super(station, timeStart, timeEnd, azimuthStart, azimuthEnd, elevationStart, elevationEnd);
         this.tecu = tecu;

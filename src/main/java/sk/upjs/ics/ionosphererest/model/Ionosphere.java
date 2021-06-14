@@ -3,7 +3,9 @@ package sk.upjs.ics.ionosphererest.model;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 @Table
 public class Ionosphere {
@@ -11,8 +13,8 @@ public class Ionosphere {
     @PrimaryKey
     private Long id;
     private String station;
-    private LocalDateTime timeStart;
-    private LocalDateTime timeEnd;
+    private Instant timeStart;
+    private Instant timeEnd;
     private Integer azimuthStart;
     private Integer azimuthEnd;
     private Integer elevationStart;
@@ -23,7 +25,7 @@ public class Ionosphere {
 
     public Ionosphere(){}
 
-    public Ionosphere(Long id, String station, LocalDateTime timeStart, LocalDateTime timeEnd, Integer azimuthStart,
+    public Ionosphere(Long id, String station, Instant timeStart, Instant timeEnd, Integer azimuthStart,
                       Integer azimuthEnd, Integer elevationStart, Integer elevationEnd, Double tecu, Double s4,
                       Double sigmaphi) {
         this.id = id;
@@ -55,19 +57,19 @@ public class Ionosphere {
         this.station = station;
     }
 
-    public LocalDateTime getTimeStart() {
+    public Instant getTimeStart() {
         return timeStart;
     }
 
-    public void setTimeStart(LocalDateTime timeStart) {
+    public void setTimeStart(Instant timeStart) {
         this.timeStart = timeStart;
     }
 
-    public LocalDateTime getTimeEnd() {
+    public Instant getTimeEnd() {
         return timeEnd;
     }
 
-    public void setTimeEnd(LocalDateTime timeEnd) {
+    public void setTimeEnd(Instant timeEnd) {
         this.timeEnd = timeEnd;
     }
 

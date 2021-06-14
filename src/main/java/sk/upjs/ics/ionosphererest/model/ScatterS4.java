@@ -1,6 +1,8 @@
 package sk.upjs.ics.ionosphererest.model;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class ScatterS4 extends Data{
 
@@ -8,7 +10,7 @@ public class ScatterS4 extends Data{
 
     public ScatterS4(){}
 
-    public ScatterS4(String station, LocalDateTime timeStart, LocalDateTime timeEnd, double s4) {
+    public ScatterS4(String station, Instant timeStart, Instant timeEnd, double s4) {
         super(station, timeStart, timeEnd);
         this.s4 = s4;
     }

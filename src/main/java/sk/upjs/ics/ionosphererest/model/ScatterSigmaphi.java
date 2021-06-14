@@ -1,6 +1,8 @@
 package sk.upjs.ics.ionosphererest.model;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class ScatterSigmaphi extends Data {
 
@@ -8,7 +10,7 @@ public class ScatterSigmaphi extends Data {
 
     public ScatterSigmaphi(){}
 
-    public ScatterSigmaphi(String station, LocalDateTime timeStart, LocalDateTime timeEnd, double sigmaphi) {
+    public ScatterSigmaphi(String station, Instant timeStart, Instant timeEnd, double sigmaphi) {
         super(station, timeStart, timeEnd);
         this.sigmaphi = sigmaphi;
     }

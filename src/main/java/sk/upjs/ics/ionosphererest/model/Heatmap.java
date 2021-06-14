@@ -1,6 +1,8 @@
 package sk.upjs.ics.ionosphererest.model;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class Heatmap extends Data {
     private int azimuthStart;
@@ -10,7 +12,7 @@ public class Heatmap extends Data {
 
     public Heatmap(){}
 
-    public Heatmap(String station, LocalDateTime timeStart, LocalDateTime timeEnd,
+    public Heatmap(String station, Instant timeStart, Instant timeEnd,
                    int azimuthStart, int azimuthEnd, int elevationStart, int elevationEnd) {
         super(station, timeStart, timeEnd);
         this.azimuthStart = azimuthStart;
