@@ -1,22 +1,23 @@
 package sk.upjs.ics.ionosphererest.model;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
+import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Table
 public class Ionosphere {
 
-    @PrimaryKey
-    private Long id;
+    @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
     private String station;
+    @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED)
     private Instant timeStart;
     private Instant timeEnd;
+    @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED)
     private Integer azimuthStart;
     private Integer azimuthEnd;
+    @PrimaryKeyColumn(type = PrimaryKeyType.CLUSTERED)
     private Integer elevationStart;
     private Integer elevationEnd;
     private Double tecu;
@@ -25,10 +26,8 @@ public class Ionosphere {
 
     public Ionosphere(){}
 
-    public Ionosphere(Long id, String station, Instant timeStart, Instant timeEnd, Integer azimuthStart,
-                      Integer azimuthEnd, Integer elevationStart, Integer elevationEnd, Double tecu, Double s4,
-                      Double sigmaphi) {
-        this.id = id;
+    public Ionosphere(String station, Instant timeStart, Instant timeEnd, Integer azimuthStart, Integer azimuthEnd,
+                      Integer elevationStart, Integer elevationEnd, Double tecu, Double s4, Double sigmaphi) {
         this.station = station;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -39,14 +38,6 @@ public class Ionosphere {
         this.tecu = tecu;
         this.s4 = s4;
         this.sigmaphi = sigmaphi;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getStation() {
@@ -132,8 +123,7 @@ public class Ionosphere {
     @Override
     public String toString() {
         return "Ionosphere{" +
-                "id=" + id +
-                ", station='" + station + '\'' +
+                "station='" + station + '\'' +
                 ", timeStart=" + timeStart +
                 ", timeEnd=" + timeEnd +
                 ", azimuthStart=" + azimuthStart +

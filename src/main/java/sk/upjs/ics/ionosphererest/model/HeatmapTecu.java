@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class HeatmapTecu extends Heatmap{
+public class HeatmapTecu extends Data{
 
     private double tecu;
 

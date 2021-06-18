@@ -24,11 +24,11 @@ public class AzimuthElevation {
         this.elevationEnd = ionosphere.getElevationEnd();
     }
 
-    public AzimuthElevation(Heatmap heatmap) {
-        this.azimuthStart = heatmap.getAzimuthStart();
-        this.azimuthEnd = heatmap.getAzimuthEnd();
-        this.elevationStart = heatmap.getElevationStart();
-        this.elevationEnd = heatmap.getElevationEnd();
+    public AzimuthElevation(Data data) {
+        this.azimuthStart = data.getAzimuthStart();
+        this.azimuthEnd = data.getAzimuthEnd();
+        this.elevationStart = data.getElevationStart();
+        this.elevationEnd = data.getElevationEnd();
     }
 
     public int getAzimuthStart() {

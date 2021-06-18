@@ -4,14 +4,13 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class ScatterSigmaphi extends Data {
+public class ScatterSigmaphi extends ScatterData {
 
     private double sigmaphi;
 
-    public ScatterSigmaphi(){}
-
-    public ScatterSigmaphi(String station, Instant timeStart, Instant timeEnd, double sigmaphi) {
-        super(station, timeStart, timeEnd);
+    public ScatterSigmaphi(String station, Instant timeStart, Instant timeEnd, int azimuthStart, int azimuthEnd,
+                           int elevationStart, int elevationEnd, boolean scintillation, double sigmaphi) {
+        super(station, timeStart, timeEnd, azimuthStart, azimuthEnd, elevationStart, elevationEnd, scintillation);
         this.sigmaphi = sigmaphi;
     }
 

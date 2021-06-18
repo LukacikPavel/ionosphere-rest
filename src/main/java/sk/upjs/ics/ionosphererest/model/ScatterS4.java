@@ -4,14 +4,13 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class ScatterS4 extends Data{
+public class ScatterS4 extends ScatterData{
 
     private double s4;
 
-    public ScatterS4(){}
-
-    public ScatterS4(String station, Instant timeStart, Instant timeEnd, double s4) {
-        super(station, timeStart, timeEnd);
+    public ScatterS4(String station, Instant timeStart, Instant timeEnd, int azimuthStart, int azimuthEnd,
+                     int elevationStart, int elevationEnd, boolean scintillation, double s4) {
+        super(station, timeStart, timeEnd, azimuthStart, azimuthEnd, elevationStart, elevationEnd, scintillation);
         this.s4 = s4;
     }
 

@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class HeatmapSigmaphi extends Heatmap {
+public class HeatmapSigmaphi extends Data {
 
     private double sigmaphi;
 

@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 
-public class HeatmapS4 extends Heatmap {
+public class HeatmapS4 extends Data {
 
     private double s4;
 
