@@ -1,4 +1,4 @@
-### Install packages
+### Python 3.7.9 - install packages 
 `pip install -r requirements.txt`
 
 ### Create keyspace and table in Cassandra
