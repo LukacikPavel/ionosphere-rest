@@ -153,6 +153,12 @@ public class IonosphereController {
                     if (scintillation) {
                         data.setScintillation(true);
                     }
+
+                    data.setAzimuthStart(azimuthStart);
+                    data.setAzimuthEnd(azimuthEnd);
+                    data.setElevationStart(elevationStart);
+                    data.setElevationEnd(elevationEnd);
+
                     map.put(stationTimeStartEnd, data);
                     map2.put(stationTimeStartEnd, 1);
                 }
