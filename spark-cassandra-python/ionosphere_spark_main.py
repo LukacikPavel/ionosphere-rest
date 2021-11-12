@@ -121,5 +121,3 @@ if __name__ == "__main__":
 
   spark.stop()
 
-
-#spark-submit --master local[4] --packages com.datastax.spark:spark-cassandra-connector_2.11:2.0.9 --conf spark.cassandra.connection.host=127.0.0.1 .\ionosphere.py
